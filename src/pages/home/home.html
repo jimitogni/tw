@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Meus Gastos - ETEC 3º TI
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addDados()">
+        <ion-icon name="add-circle"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h2>Lista de gastos</h2>
+  <ion-list>
+    <ion-item-sliding *ngFor="let gastos of gastos; let i=index">
+      <ion-item nopadding>
+        <p>
+          <span>{{gastos.data}}</span><br>
+          Tipo: {{gastos.tipo}}<br>
+          {{gastos.descricao}}
+        </p>
+        <h3 item-end>
+          Quantidade: ${{gastos.valor}}
+        </h3>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary" (click)="editaDados(gastos.id)">
+          <ion-icon name="paper"></ion-icon>
+        </button>
+        <button ion-button color="danger" (click)="deletaDados(gastos.id)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>Saldo: ${{saldo}}</ion-title>
+  </ion-toolbar>
+</ion-footer>
